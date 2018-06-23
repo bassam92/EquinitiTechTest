@@ -12,56 +12,57 @@ namespace BC.Transaction
     /// </summary>
     public class TransactionService
     {
-        private TransactionService()
 
-        {
+       // Singleton commented , the source list gets overrided every time
 
-        }
+        //private TransactionService()
 
+        //{
 
+        //}
 
-        private static TransactionService instance = null;
+        //private static TransactionService instance = null;
 
-        public static TransactionService Instance
+        //public static TransactionService Instance
 
-        {
+        //{
 
-            get
+        //    get
 
-            {
+        //    {
 
-                if (instance == null)
+        //        if (instance == null)
 
-                {
+        //        {
 
-                    instance = new TransactionService();
-                    //pumping default data set into the source
-                    if (allTransactions == null)
-                    {
-                        allTransactions = new List<TransactionModel>();
-                        for (int i = 0; i < 10; i++)
-                        {
-                            TransactionModel tranModel = new TransactionModel();
-                            tranModel.Id = Guid.NewGuid();
-                            tranModel.ApplicationId = 90001 + i;
-                            tranModel.Type = "Debit";
-                            tranModel.Summary = "Payment";
-                            tranModel.Amount = Convert.ToDecimal("58.26");
-                            tranModel.PostingDate = DateTime.Today.AddHours(i);
-                            tranModel.IsCleared = true;
-                            tranModel.ClearedDate = DateTime.Today.AddHours(i);
+        //            instance = new TransactionService();
+        //            //pumping default data set into the source
+        //            if (allTransactions == null)
+        //            {
+        //                allTransactions = new List<TransactionModel>();
+        //                for (int i = 0; i < 10; i++)
+        //                {
+        //                    TransactionModel tranModel = new TransactionModel();
+        //                    tranModel.Id = Guid.NewGuid();
+        //                    tranModel.ApplicationId = 90001 + i;
+        //                    tranModel.Type = "Debit";
+        //                    tranModel.Summary = "Payment";
+        //                    tranModel.Amount = Convert.ToDecimal("58.26");
+        //                    tranModel.PostingDate = DateTime.Today.AddHours(i);
+        //                    tranModel.IsCleared = true;
+        //                    tranModel.ClearedDate = DateTime.Today.AddHours(i);
 
-                            allTransactions.Add(tranModel);
-                        }
-                    }
+        //                    allTransactions.Add(tranModel);
+        //                }
+        //            }
 
-                }
+        //        }
 
-                return instance;
+        //        return instance;
 
-            }
+        //    }
 
-        }
+        //}
 
 
 
@@ -78,29 +79,29 @@ namespace BC.Transaction
 
 
         List<TransactionModel> allTransactions = null;
-       //public TransactionService()
-       // {
-       //     //pumping default data set into the source
-       //     if (allTransactions == null)
-       //     {
-       //         allTransactions = new List<TransactionModel>();
-       //         for (int i = 0; i < 10; i++)
-       //         {
-       //             TransactionModel tranModel = new TransactionModel();
-       //             tranModel.Id = Guid.NewGuid();
-       //             tranModel.ApplicationId = 90001+i;
-       //             tranModel.Type = "Debit";
-       //             tranModel.Summary = "Payment";
-       //             tranModel.Amount = Convert.ToDecimal("58.26");
-       //             tranModel.PostingDate = DateTime.Today.AddHours(i);
-       //             tranModel.IsCleared = true;
-       //             tranModel.ClearedDate = DateTime.Today.AddHours(i);
+        public TransactionService()
+        {
+            //pumping default data set into the source
+            if (allTransactions == null)
+            {
+                allTransactions = new List<TransactionModel>();
+                for (int i = 0; i < 10; i++)
+                {
+                    TransactionModel tranModel = new TransactionModel();
+                    tranModel.Id = Guid.NewGuid();
+                    tranModel.ApplicationId = 90001 + i;
+                    tranModel.Type = "Debit";
+                    tranModel.Summary = "Payment";
+                    tranModel.Amount = Convert.ToDecimal("58.26");
+                    tranModel.PostingDate = DateTime.Today.AddHours(i);
+                    tranModel.IsCleared = true;
+                    tranModel.ClearedDate = DateTime.Today.AddHours(i);
 
-       //             allTransactions.Add(tranModel);
-       //         }
-       //     }
+                    allTransactions.Add(tranModel);
+                }
+            }
 
-       // }
+        }
 
         public List<TransactionModel> GetTrasactions()
         {
